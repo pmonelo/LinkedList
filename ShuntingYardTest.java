@@ -45,12 +45,17 @@ public class ShuntingYardTest
     {
         ShuntingYard a=new ShuntingYard();
         assertEquals(10.0, a.infixToPostFix("5 + 5"), .000001);
-        ShuntingYard b=new ShuntingYard();
-        assertEquals(2.0, b.infixToPostFix("1 * 1 + 1"), .000001);
-        ShuntingYard c=new ShuntingYard();
-        assertEquals(1.0, c.infixToPostFix("9 / 9"), .000001);
-        ShuntingYard d=new ShuntingYard();
-        assertEquals(2.0, d.infixToPostFix("2 / 1 + 1"), .000001);
+        assertEquals(2.0, a.infixToPostFix("1 * 1 + 1"), .000001);
+        assertEquals(1.0, a.infixToPostFix("9 / 9"), .000001);
+        assertEquals(2.0, a.infixToPostFix("2 / 1 + 1"), .000001);
+        
+    }
+    
+        @Test
+    public void shuntingYardTest2()
+    {
+        ShuntingYard a=new ShuntingYard();
+        assertEquals(15.0, a.infixToPostFix("5 + 5 + 5"), .000001);
         
     }
         

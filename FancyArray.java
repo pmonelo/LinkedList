@@ -106,7 +106,14 @@ public class FancyArray<T> implements List<T>
         String x= "";
         for (int i=0; i<size; i++)
         {
-           x= x+this.get(i)+","+"";  
+           if(i==size-1)
+           {
+               x=x+this.get(i)+"";
+            }
+           else
+           {
+               x= x+this.get(i)+","+"";  
+            }
         }
         return ""+x;
     }

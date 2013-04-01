@@ -1,4 +1,4 @@
-public class ShuntingYard<T>
+public class ShuntingYard
 {
    private Stack<String> s;
    private Postfix p;
@@ -19,6 +19,11 @@ public class ShuntingYard<T>
     
     public double infixToPostFix(String infix)
     {
+        f.clear();
+        while(s.isEmpty()==false)
+        {
+            s.pop();
+        }
         String[] arr= split(infix);
 
         for(int i=0; i<arr.length; i++)
@@ -31,9 +36,11 @@ public class ShuntingYard<T>
             {
                 while(!s.isEmpty()&& prec(arr[i]) <= prec(s.peek()))
                 {
+                    System.out.println("check");
                     f.add(s.pop());
                 }
                 s.push(arr[i]);
+                System.out.println(prec(s.peek()));
             }
             else if(arr[i].equals("("))
             {
@@ -47,12 +54,13 @@ public class ShuntingYard<T>
                 }
                 String popcatcher= s.pop(); 
             }
-            System.out.println(i+" "+s.peek()+" " + f.size());
+            //System.out.println(i+" "+s.peek()+" " + f.size());
         }
         while(!s.isEmpty())
         {
             f.add(s.pop());
         }
+        System.out.println(f);
         return p.eval(f);
     }
     
@@ -64,13 +72,21 @@ public class ShuntingYard<T>
         }
         else if(str.equals("^"))
         {
+            return 5;
+        }
+        else if(str.equals("/"))
+        {
+            return 4;
+        }
+        else if(str.equals("*"))
+        {
             return 3;
         }
-        else if(str.equals("*") || str.equals("/"))
+        else if(str.equals("-"))
         {
             return 2;
         }
-        else if(str.equals("+") || str.equals("-"))
+        else if(str.equals("+"))
         {
             return 1;
         }

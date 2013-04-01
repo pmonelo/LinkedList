@@ -8,9 +8,16 @@ public class Stack<T>
     
     public T pop()
     {
-        T t=stack.get(0);
-        stack.remove();
-        return t;
+        if(!isEmpty())
+        {
+            T t=stack.get(0);
+            stack.remove();
+            return t;
+        }
+        else
+        {
+            throw new java.util.EmptyStackException();
+        }
     }
     
     public void push( T value)
@@ -20,7 +27,14 @@ public class Stack<T>
     
     public T peek()
     {
+        if(!isEmpty())
+        {
             return stack.get(0);
+        }
+        else
+        {
+            throw new java.util.EmptyStackException();
+        }
     }
     
     public boolean isEmpty()
